@@ -1,0 +1,7 @@
+body {
+    background-color: aquamarine;
+}
+
+.task-completed {
+    text-decoration: line-through;
+}

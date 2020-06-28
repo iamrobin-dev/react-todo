@@ -9,11 +9,12 @@ import {
   InputGroupAddon,
   ListGroup,
   ListGroupItem,
+  Badge,
 } from "reactstrap";
 
 const App = () => {
   const [value, setValue] = React.useState("");
-  const [tasks, setTasks] = React.useState(["task1", "task2"]);
+  const [tasks, setTasks] = React.useState(["Learn Javascript", "Learn React"]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,12 +30,15 @@ const App = () => {
     }
   };
 
-  const handleDelete = (t) => {
+  const handleDelete = (taskIndex) => {
     console.log("deleted");
-    const updateTaskList = tasks.filter((task) => task !== t);
+    const updateTaskList = tasks.filter(
+      (task, index) => (task, index) !== taskIndex
+    );
     console.log(updateTaskList);
     setTasks(updateTaskList);
   };
+
   return (
     <Container className="mt-4">
       <h2 className="text-danger">React Todo-App</h2>
@@ -56,11 +60,23 @@ const App = () => {
 
       <ListGroup>
         {tasks.map((task, index) => (
-          <ListGroupItem color="success" key={index}>
-            {task}- <Button color="success">Completed</Button> |{" "}
-            <Button color="danger" onClick={() => handleDelete(task)}>
-              Delete
-            </Button>
+          <ListGroupItem
+            color="success"
+            key={index}
+            className="d-flex justify-content-between"
+          >
+            <Badge className="p-3 info">
+              <span>{task}</span>
+            </Badge>
+            <div>
+              <Button
+                color="danger"
+                onClick={() => handleDelete(index)}
+                className="ml-1"
+              >
+                Delete
+              </Button>
+            </div>
           </ListGroupItem>
         ))}
       </ListGroup>

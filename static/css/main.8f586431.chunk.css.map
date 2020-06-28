@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,wBACJ,CAEA,gBACI,4BACJ","file":"main.8f586431.chunk.css","sourcesContent":["body {\n    background-color: aquamarine;\n}\n\n.task-completed {\n    text-decoration: line-through;\n}"]}
